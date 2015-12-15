@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">Antojitos</string>
+    <string name="logo">Antojitos</string>
+    <string name="title_activity_main">MainActivity</string>
+
+    <!-- Facebook -->
+    <string name="facebook_app_id">495559033965041</string>
+    <string name="title_activity_facebook">FacebookActivity</string>
+    <string name="title_activity_main_screen">MainScreen</string>
+    <string name="title_activity_list_foursquare">ListFoursquare</string>
+</resources>

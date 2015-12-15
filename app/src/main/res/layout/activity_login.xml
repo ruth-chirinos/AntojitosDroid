@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorBackgroundLogin"
+    android:weightSum="6"
+    android:padding="2dp">
+    <LinearLayout
+        android:layout_height="0dp"
+        android:layout_width="match_parent"
+        android:layout_weight="2"
+        android:layout_marginTop="20dp"
+        android:gravity="center"
+        android:weightSum="1">
+        <ImageView android:id="@+id/imageView1"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:src="@mipmap/heart300"
+            android:layout_centerInParent="true"
+            android:layout_gravity="center"
+            android:layout_weight="0.35" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_height="0dp"
+        android:layout_width="match_parent"
+        android:layout_weight="1"
+        android:gravity="center">
+        <TextView
+            android:text="Anto"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/anto"
+            android:textSize="@dimen/font_size"
+            android:textColor="@color/colorButtons"
+            android:textStyle="bold"/>
+        <TextView
+            android:text="jitos"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/jitos"
+            android:textSize="@dimen/font_size"
+            android:textColor="@color/colorFontWhite"
+            android:layout_gravity="center"
+            android:textStyle="bold"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_height="0dp"
+        android:layout_width="match_parent"
+        android:layout_weight="2"
+        android:gravity="center">
+        <TextView
+            android:text="Delicious food at your convenience"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/textView"
+            android:layout_alignParentStart="true"
+            android:textColor="@color/colorFontWhite"
+            android:layout_centerInParent="true"
+            android:layout_gravity="center"
+            android:textSize="@dimen/font_size20"/>
+    </LinearLayout>
+
+    <Button
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:text="New Button"
+        android:id="@+id/button"
+        android:layout_gravity="center"/>
+
+    <com.facebook.login.widget.LoginButton
+        android:id="@+id/login_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="30dp"
+        android:layout_marginBottom="30dp"
+        />
+</LinearLayout>
