@@ -4,6 +4,7 @@
     <string name="title_activity_main">MainActivity</string>
 
     <!-- Facebook -->
+    <!--string name="facebook_app_id">495570533963891</string-->
     <string name="facebook_app_id">495559033965041</string>
     <string name="title_activity_facebook">FacebookActivity</string>
     <string name="title_activity_main_screen">MainScreen</string>

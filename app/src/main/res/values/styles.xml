@@ -19,4 +19,11 @@
     <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 
+    <style name="FacebookLoginButton">
+        <item name="android:background">@color/colorButtons</item>
+        <item name="android:textColor">@color/colorFontWhite</item>
+        <item name="android:textSize">19sp</item>
+        <item name="android:gravity">center</item>
+    </style>
+
 </resources>

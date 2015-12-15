@@ -4,8 +4,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
-import android.view.View;
-import android.widget.Button;
 import android.widget.TextView;
 
 import com.facebook.CallbackManager;
@@ -22,7 +20,7 @@ import delicoin2.com.delicoin.R;
 
 public class Login extends AppCompatActivity {
 
-    private Button btnWithoutLogin;
+   // private Button btnWithoutLogin;
     private TextView info;
     private CallbackManager callbackManager;
     private LoginButton loginButton;
@@ -38,14 +36,14 @@ public class Login extends AppCompatActivity {
         Log.i("FACEBOOK_DELI_COIN", "Facebook is available HERE !!!");
         info = (TextView)findViewById(R.id.info);
 
-        btnWithoutLogin = (Button) findViewById(R.id.button);
-        btnWithoutLogin.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent myIntent = new Intent(view.getContext(), MainActivity.class);
-                startActivityForResult(myIntent, 0);
-            }
-        });
+//        btnWithoutLogin = (Button) findViewById(R.id.button);
+//        btnWithoutLogin.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                Intent myIntent = new Intent(view.getContext(), MainActivity.class);
+//                startActivityForResult(myIntent, 0);
+//            }
+//        });
 
         loginButton = (LoginButton)findViewById(R.id.login_button);
         loginButton.setReadPermissions("user_friends");
