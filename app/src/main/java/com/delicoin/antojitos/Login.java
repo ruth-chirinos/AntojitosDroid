@@ -6,13 +6,19 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.widget.TextView;
 
+import com.delicoin.antojitos.bean.User;
 import com.facebook.CallbackManager;
 import com.facebook.FacebookCallback;
 import com.facebook.FacebookException;
 import com.facebook.FacebookSdk;
+import com.facebook.GraphRequest;
+import com.facebook.GraphResponse;
 import com.facebook.appevents.AppEventsLogger;
 import com.facebook.login.LoginResult;
 import com.facebook.login.widget.LoginButton;
+import com.firebase.client.Firebase;
+
+import org.json.JSONObject;
 
 import java.util.Arrays;
 
@@ -30,6 +36,7 @@ public class Login extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         FacebookSdk.sdkInitialize(getApplicationContext());
+        Firebase.setAndroidContext(this);
         callbackManager = CallbackManager.Factory.create();
         setContentView(R.layout.activity_login);
 
@@ -50,11 +57,13 @@ public class Login extends AppCompatActivity {
         loginButton.setReadPermissions(Arrays.asList("public_profile, email, user_birthday"));
         loginButton.registerCallback(callbackManager, new FacebookCallback<LoginResult>() {
             @Override
-            public void onSuccess(LoginResult loginResult) {
-
+            public void onSuccess(LoginResult loginResult)
+            {
+                Login.saveAuthentication(loginResult);
                 Intent i = new Intent(Login.this, MainActivity.class);
                 startActivity(i);
                 Log.i(TAG, "Logged in");
+
 //                info.setText(
 //                        "User ID: "
 //                                + loginResult.getAccessToken().getUserId()
@@ -118,5 +127,48 @@ public class Login extends AppCompatActivity {
     {
         super.onActivityResult(requestCode, resultCode, data);
         callbackManager.onActivityResult(requestCode, resultCode, data);
+    }
+
+    /*Save Authentication of the iser*/
+    public static void saveAuthentication(LoginResult loginResult)
+    {
+        // App code
+        Log.e("onSuccess", "--------" + loginResult.getAccessToken());
+        Log.e("Token", "--------" + loginResult.getAccessToken().getToken());
+        Log.e("Permision", "--------" + loginResult.getRecentlyGrantedPermissions());
+//        Profile profile = Profile.getCurrentProfile();
+//        Log.e("ProfileDataNameF", "--" + profile.getFirstName());
+//        Log.e("ProfileDataNameL", "--" + profile.getLastName());
+//        Log.e("Image URI", "--" + profile.getLinkUri());
+
+        Log.e("OnGraph", "------------------------");
+        final User user = User.getInstance();
+        GraphRequest request = GraphRequest.newMeRequest(
+                loginResult.getAccessToken(),
+                new GraphRequest.GraphJSONObjectCallback() {
+                    @Override
+                    public void onCompleted(
+                            JSONObject object,
+                            GraphResponse response) {
+                        // Application code
+                        Log.e("GraphResponse", "-------------" + response.toString());
+                        try {
+                            user.init((String) object.get("id"),
+                                    (String) object.get("birthday"),
+                                    (String) object.get("gender"),
+                                    (String) object.get("email"),
+                                    (String) object.get("name"));
+
+                            FirebaseUtil.saveLoginUserData(user);
+                        }catch(Exception e)
+                        {
+                            Log.e(TAG,e.getMessage());
+                        }
+                    }
+                });
+        Bundle parameters = new Bundle();
+        parameters.putString("fields", "id,name,link,gender,birthday,email");
+        request.setParameters(parameters);
+        request.executeAsync();
     }
 }
