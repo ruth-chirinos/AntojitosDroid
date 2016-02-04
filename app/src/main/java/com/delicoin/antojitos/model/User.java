@@ -1,4 +1,4 @@
-package com.delicoin.antojitos.bean;
+package com.delicoin.antojitos.model;
 
 /**
  * Created by RUTH on 15/11/02.

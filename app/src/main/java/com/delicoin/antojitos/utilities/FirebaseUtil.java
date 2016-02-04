@@ -1,6 +1,6 @@
-package com.delicoin.antojitos;
+package com.delicoin.antojitos.utilities;
 
-import com.delicoin.antojitos.bean.User;
+import com.delicoin.antojitos.model.User;
 import com.firebase.client.DataSnapshot;
 import com.firebase.client.Firebase;
 import com.firebase.client.FirebaseError;
